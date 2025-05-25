@@ -55,7 +55,9 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll() // Доступ к авторизации для всех
                         .requestMatchers("/schedules/**").permitAll() // Доступ к расписанию клиентов
                         .requestMatchers("/bookings/**").permitAll() // Доступ к бронированиям
+                        .requestMatchers("/appointments/**").permitAll() // Доступ к бронированиям
                         .requestMatchers("/trainerSchedule/**").hasRole("TRAINER") // Только для тренеров
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Открытый доступ к Swagger
                         .anyRequest().authenticated() // Остальные запросы требуют аутентификации
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
