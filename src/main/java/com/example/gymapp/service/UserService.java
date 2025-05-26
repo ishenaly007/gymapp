@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 /**
- * Сервис для инициализации тестовых пользователей.
+ * Сервис для инициализации и управления пользователями.
  */
 @Service
 public class UserService {
@@ -34,5 +33,18 @@ public class UserService {
         trainer.setPassword(passwordEncoder.encode("123456"));
         trainer.setRole("trainer");
         userRepository.save(trainer);
+    }
+
+    /**
+     * Регистрация нового пользователя.
+     * @param user Пользователь для регистрации.
+     * @throws IllegalArgumentException Если пользователь с таким email уже существует.
+     */
+    public void registerUser(User user) {
+        if (userRepository.existsById(user.getEmail())) {
+            throw new IllegalArgumentException("Пользователь с email " + user.getEmail() + " уже существует");
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
     }
 }
