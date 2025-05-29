@@ -55,12 +55,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Отключаем CSRF для API
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Без сессий, используем JWT
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // Доступ к авторизации для всех
-                        .requestMatchers("/schedules/**").permitAll() // Доступ к расписанию клиентов
-                        .requestMatchers("/bookings/**").permitAll() // Доступ к бронированиям
-                        .requestMatchers("/appointments/**").permitAll() // Доступ к бронированиям
-                        .requestMatchers("/trainerSchedule/**").hasRole("TRAINER") // Только для тренеров
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Открытый доступ к Swagger
+                        .requestMatchers("/api/auth/**").permitAll() // Доступ к авторизации для всех
+                        .requestMatchers("/api/schedules/**").permitAll() // Доступ к расписанию клиентов
+                        .requestMatchers("/api/bookings/**").permitAll() // Доступ к бронированиям
+                        .requestMatchers("/api/appointments/**").permitAll() // Доступ к бронированиям
+                        .requestMatchers("/api/trainerSchedule/**").hasRole("TRAINER") // Только для тренеров
+                        .requestMatchers("/api/swagger-ui/**", "/api/v3/api-docs/**").permitAll() // Открытый доступ к Swagger
                         .anyRequest().authenticated() // Остальные запросы требуют аутентификации
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

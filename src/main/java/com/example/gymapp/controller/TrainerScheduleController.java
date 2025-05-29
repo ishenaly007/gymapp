@@ -12,7 +12,7 @@ import java.util.List;
  * Контроллер для работы с расписанием тренеров.
  */
 @RestController
-@RequestMapping("/trainerSchedule")
+@RequestMapping("/api/trainerSchedule")
 public class TrainerScheduleController {
 
     @Autowired

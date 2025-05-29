@@ -12,7 +12,7 @@ import java.util.List;
  * Контроллер для работы с расписанием клиентов.
  */
 @RestController
-@RequestMapping("/schedules")
+@RequestMapping("/api/schedules")
 public class ScheduleController {
 
     @Autowired

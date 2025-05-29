@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * Контроллер для аутентификации и регистрации.
  */
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);

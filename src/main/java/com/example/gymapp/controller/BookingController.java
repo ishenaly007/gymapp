@@ -12,7 +12,7 @@ import java.util.List;
  * Контроллер для работы с бронированиями.
  */
 @RestController
-@RequestMapping("/bookings")
+@RequestMapping("/api/bookings")
 public class BookingController {
 
     @Autowired
